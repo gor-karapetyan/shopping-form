@@ -254,6 +254,13 @@ a{
     align-items: center;
     justify-content: space-between;
 }
+.form-slide-title a{
+    font-size: 12px;
+    line-height: 14px;
+    color: #5A1094;
+    text-decoration-color: #979797;
+    font-weight: 500;
+}
 .form-slide-title-text{
     font-size: 26px;
     line-height: 31px;
@@ -357,7 +364,7 @@ a{
     font-size: 16px;
     line-height: 19px;
     text-align: center;
-    font-weight: 500px;
+    font-weight: 500;
     cursor: pointer;
 }
 select .input-field{
