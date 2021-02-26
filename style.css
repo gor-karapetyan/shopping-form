@@ -10,6 +10,9 @@
     padding: 0;
     font-family: 'HelveticaNeue', sans-serif;
 }
+body{
+    background: #E6E9F0;
+}
 a{
     color: inherit; /*chexarkum e brauzeri koxmic trvac guyn@*/
 }
@@ -238,12 +241,14 @@ a{
 /* Form Header Nav end */
 .form-slides{
     position: relative;
+    height: 100%;
 }
 .form-slide{
     position: absolute;
     width: 100%;
     opacity: 0;
     visibility: hidden;
+    height: 100%;
 }
 .form-slide.visible{
     opacity: 1;
@@ -255,11 +260,16 @@ a{
     justify-content: space-between;
 }
 .form-slide-title a{
-    font-size: 12px;
-    line-height: 14px;
-    color: #5A1094;
     text-decoration-color: #979797;
     font-weight: 500;
+}
+.form-slide-description{
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    line-height: 18px;
+    color: #6B6B6B;
+    margin: 15px 0;
 }
 .form-slide-title-text{
     font-size: 26px;
