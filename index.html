@@ -34,7 +34,7 @@
                    </ul>
                </div>
                <form class="form-slides">
-                   <div class="form-slide shipping-info">
+                   <div class="form-slide shipping-info visible">
                        <div class="form-slide-title">
                            <span class="form-slide-title-text font-purple">Shipping Info</span>
                        </div>
@@ -71,7 +71,8 @@
                             <div class="inputs-row">
                                 <div class="input-container">
                                     <select name="country" class="input-field input-required" title="Country">
-                                        <option disabled selected>Country</option>
+                                        <option disabled selected value="">Country</option>
+                                        <option value="yerevan">Armenia</option>
                                     </select>
                                     <img src="images/bottom-arrow.svg" alt="" class="input-img">
                                     <p class="input-tooltip">Please enter shipping country</p>
@@ -138,7 +139,7 @@
                             <button type="button" class="btn">Continue</button>
                         </div>
                    </div>
-                   <div class="form-slide payment visible">
+                   <div class="form-slide payment">
                         <div class="form-slide-title">
                             <span class="form-slide-title-text font-purple">Payment</span>
                         </div>
@@ -272,5 +273,6 @@
             </div>
        </div>
    </main>
+   <script src="js/script.js"></script>
 </body>
 </html>

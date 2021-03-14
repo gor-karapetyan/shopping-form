@@ -308,6 +308,9 @@ a{
     line-height: 18px;
     color: #6B6B6B;
 }
+.input-warning{
+    background: rgba(248, 231, 28, 0.07);
+}
 .input-tooltip{
     font-size: 13px;
     line-height: 16px;
@@ -326,7 +329,7 @@ a{
     visibility: hidden;
     min-width: 170px;
 }
-.input-tooltip .visible{
+.input-tooltip.visible{
     opacity: 1;
     visibility: visible;
 }
