@@ -1,6 +1,7 @@
 let btns = document.querySelectorAll(".btn");
 let inputs = document.querySelectorAll(".input-required");
 let slideOrder = ['shipping', 'billing', 'payment'];
+let copyBtn = document.querySelector('#copy-data');
 
 btns.forEach(function(b, i){
     b.addEventListener('click', btnClickHandler);
@@ -12,6 +13,19 @@ inputs.forEach(function(inp){
         let tooltip = inp.closest(".input-container").querySelector('.input-tooltip');
         if(tooltip){
             tooltip.classList.remove("visible");
+        }
+    })
+})
+
+copyBtn.addEventListener('click', function(){
+    let inputs = document.querySelectorAll('[data-copy]');
+    inputs.forEach(function(input){
+        let copyName = input.dataset.copy;
+        if(input.value.length !== 0){
+            let pastsInput = document.querySelector(`[data-paste="${copyName}"]`);
+            if(pastsInput !== null){
+                pastsInput.value = input.value;
+            }
         }
     })
 })
