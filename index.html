@@ -28,13 +28,13 @@
            <div class="form-content">
                <div class="form-nav">
                    <ul class="form-nav-list">
-                       <li class="font-purple">Shipping</li>
-                       <li>Billing</li>
-                       <li>Payment</li>
+                       <li data-slide-nav="shipping" class="font-purple">Shipping</li>
+                       <li data-slide-nav="billing">Billing</li>
+                       <li data-slide-nav="payment">Payment</li>
                    </ul>
                </div>
                <form class="form-slides">
-                   <div class="form-slide shipping-info visible">
+                   <div data-slide="shipping" class="form-slide shipping-info visible">
                        <div class="form-slide-title">
                            <span class="form-slide-title-text font-purple">Shipping Info</span>
                        </div>
@@ -72,7 +72,7 @@
                                 <div class="input-container">
                                     <select name="country" class="input-field input-required" title="Country">
                                         <option disabled selected value="">Country</option>
-                                        <option value="yerevan">Armenia</option>
+                                        <option value="Yerevan">Armenia</option>
                                     </select>
                                     <img src="images/bottom-arrow.svg" alt="" class="input-img">
                                     <p class="input-tooltip">Please enter shipping country</p>
@@ -87,7 +87,7 @@
                            <button type="button" class="btn">Continue</button>
                        </div>
                    </div>
-                   <div class="form-slide billing-info">
+                   <div data-slide="billing" class="form-slide billing-info">
                         <div class="form-slide-title">
                             <span class="form-slide-title-text font-purple">Billing Information</span>
                             <a href="#" class="title-link font-purple">Same as shipping</a>
@@ -124,7 +124,8 @@
                             <div class="inputs-row">
                                 <div class="input-container">
                                     <select name="country" class="input-field input-required" title="Country">
-                                        <option disabled selected>Country</option>
+                                        <option disabled selected value="">Country</option>
+                                        <option value="Yerevan">Armenia</option>
                                     </select>
                                     <img src="images/bottom-arrow.svg" alt="" class="input-img">
                                     <p class="input-tooltip">Please enter shipping country</p>
@@ -139,7 +140,7 @@
                             <button type="button" class="btn">Continue</button>
                         </div>
                    </div>
-                   <div class="form-slide payment">
+                   <div data-slide="payment" class="form-slide payment">
                         <div class="form-slide-title">
                             <span class="form-slide-title-text font-purple">Payment</span>
                         </div>
@@ -161,7 +162,7 @@
                                 Card Number
                             </div>
                             <div class="input-container">
-                                <input type="number" name="card-number" class="input-field input-required" placeholder="XXXX XXXX XXXX XXXX XXXX" title="Card Number">
+                                <input type="text" name="card-number" class="input-field input-required" placeholder="XXXX XXXX XXXX XXXX XXXX" title="Card Number">
                                 <p class="input-tooltip">Please enter your card numbers</p>
                             </div>
                         </div>
@@ -180,7 +181,7 @@
                                     Security Code
                                 </div>
                                 <div class="input-container">
-                                    <input type="password" name="security-code" class="input-field input-required" title="Security Code">
+                                    <input type="text" name="security-code" class="input-field input-required" title="Security Code">
                                     <p class="input-tooltip">Please enter your security code</p>
                                 </div>
                             </div>
