@@ -85,3 +85,85 @@ function openNextSlide(){
         }
     }
 }
+
+/*function getCountries(){
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://api.first.org/data/v1/countries?limit=300');  //! ete XMLHttpRequest veradarcnum e uxaki Object-ner
+    xhr.send();
+
+    xhr.onload = function(){
+        if(xhr.status === 200){
+            let countries = JSON.parse(xhr.response);
+            //console.log(countries);
+            if(countries.data !== undefined){
+                countries = countries.data;
+                fillCountries(countries);
+            }
+        }
+    }
+}
+
+function fillCountries(data){
+    let countrySelect = document.querySelectorAll('.country-select');
+    countrySelect.forEach(function(select){
+        for(let countryCode in data){
+            //console.log(data[countryCode]);
+            let option = new Option(data[countryCode].country, data[countryCode].country);
+            select.append(option);
+        }
+    })
+    toggleLoading(false);
+}
+
+function toggleLoading(show){
+    let loading = document.querySelector('.loader');
+    if(show){
+        loading.classList.remove('hide');
+    }else{
+        loading.classList.add('hide');
+    }
+}
+
+window.addEventListener('load', function(){
+    getCountries();
+})*/
+
+
+function getCountries(){
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://restcountries.eu/rest/v2/all');  //? ete XMLHttpRequest veradarcnum e Object-neri zangvac
+    xhr.send();
+
+    xhr.onload = function(){
+        if(xhr.status === 200){
+            let countries = JSON.parse(xhr.response);
+            console.log(countries);
+            fillCountries(countries);
+        }
+    }
+}
+
+function fillCountries(k){
+    let countrySelect = document.querySelectorAll('.country-select');
+    countrySelect.forEach(function(select){
+        for(let countryCode in k){
+            //console.log(data[countryCode]);
+            let option = new Option(k[countryCode].name, k[countryCode].name);
+            select.append(option);
+        }
+    })
+    toggleLoading(false);
+}
+
+function toggleLoading(show){
+    let loading = document.querySelector('.loader');
+    if(show){
+        loading.classList.remove('hide');
+    }else{
+        loading.classList.add('hide');
+    }
+}
+
+window.addEventListener('load', function(){
+    getCountries();
+})

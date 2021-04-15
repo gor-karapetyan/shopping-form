@@ -40,6 +40,23 @@ a{
     border-bottom: 1px solid #97979775;
     padding-bottom: 10px;
 }
+
+.loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffffda;
+    transition: all 1s;
+}
+.loader.hide{
+    opacity: 0;
+    visibility: hidden;
+}
 /* General end */
 /* Header */
 .header{
