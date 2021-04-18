@@ -2,6 +2,11 @@ let btns = document.querySelectorAll(".btn");
 let inputs = document.querySelectorAll(".input-required");
 let slideOrder = ['shipping', 'billing', 'payment'];
 let copyBtn = document.querySelector('#copy-data');
+let cityImgs = document.querySelectorAll('.get-city');
+let userData = {
+    city: null,
+    country: null
+};
 
 btns.forEach(function(b, i){
     b.addEventListener('click', btnClickHandler);
@@ -25,6 +30,10 @@ copyBtn.addEventListener('click', function(){
             }
         }
     })
+})
+
+cityImgs.forEach(function(img){
+    img.addEventListener('click', getUserCity);
 })
 
 function removeWarning(inp){
@@ -152,7 +161,9 @@ function fillCountries(k){
             select.append(option);
         }
     })
-    toggleLoading(false);
+    setTimeout(function(){
+        toggleLoading(false);
+    }, 2000);
 }
 
 function toggleLoading(show){
@@ -162,6 +173,54 @@ function toggleLoading(show){
     }else{
         loading.classList.add('hide');
     }
+}
+
+function getUserCity(){
+    let slide = this.closest('.form-slide');
+    let slideAttr = slide.dataset.slide;
+    //console.log(slideAttr);
+    if(userData.city == null && userData.country == null){
+        navigator.geolocation.getCurrentPosition(
+            function(data){
+             //console.log(data);
+             getLocation(data.coords.latitude, data.coords.longitude, slideAttr);
+         }, function(){
+             alert("error");
+         })
+    }else{
+        setCity(userData.city, slideAttr);
+        setCountry(userData.country, slideAttr)
+    }
+}
+
+function getLocation(lat, long, slideAttr){
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', `https://api.opencagedata.com/geocode/v1/json?key=042f896117d94d93913ebe09f7309de4&q=${lat}+${long}&pretty=1`);
+    xhr.send();
+
+    xhr.onload = function(){
+        if(xhr.status === 200){
+            let data = JSON.parse(xhr.response);
+            //console.log(data);
+            let city = data.results[0].components.city;
+            let country = data.results[0].components.country;
+            //console.log(city, country);
+            setCity(city, slideAttr);
+            setCountry(country, slideAttr);
+            userData.city = city;
+            userData.country = country;
+        }
+    }
+}
+
+function setCity(city, slideAttr){
+    let input = document.querySelector(`[name='${slideAttr}-city']`);
+    input.value = city;
+}
+
+function setCountry(country, slideAttr){
+    let select = document.querySelector(`[name='${slideAttr}-country']`);
+    select.value = country;
 }
 
 window.addEventListener('load', function(){
