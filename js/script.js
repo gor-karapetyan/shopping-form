@@ -1,6 +1,6 @@
 let btns = document.querySelectorAll(".btn");
 let inputs = document.querySelectorAll(".input-required");
-let slideOrder = ['shipping', 'billing', 'payment'];
+let slideOrder = ['shipping', 'billing', 'payment', 'thanks'];
 let copyBtn = document.querySelector('#copy-data');
 let cityImgs = document.querySelectorAll('.get-city');
 let userData = {
@@ -85,6 +85,10 @@ function openNextSlide(){
         if(nextSlide !== null){
             currentVisible.classList.remove('visible');
             nextSlide.classList.add('visible');
+
+            if(slideOrder[index + 1] === "thanks"){
+                km();
+            }
 
             let nextSlideNav = document.querySelector(`[data-slide-nav="${slideOrder[index + 1]}"]`);
             if(nextSlideNav !== null){
@@ -195,7 +199,7 @@ function getUserCity(){
 
 function getLocation(lat, long, slideAttr){
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', `https://api.opencagedata.com/geocode/v1/json?key=042f896117d94d93913ebe09f7309de4&q=${lat}+${long}&pretty=1`);
+    xhr.open('GET', `https://api.opencagedata.com/geocode/v1/json?key=042f896117d94d93913ebe09f7309de4&q=${lat}+${long}&pretty=1&language=en`);
     xhr.send();
 
     xhr.onload = function(){
@@ -216,13 +220,49 @@ function getLocation(lat, long, slideAttr){
 function setCity(city, slideAttr){
     let input = document.querySelector(`[name='${slideAttr}-city']`);
     input.value = city;
+    input.dispatchEvent(new Event("input"));
 }
 
 function setCountry(country, slideAttr){
     let select = document.querySelector(`[name='${slideAttr}-country']`);
     select.value = country;
+    select.dispatchEvent(new Event("input"));
+}
+
+function setInputMasks(){
+    let phone = document.querySelector('[name="daytime-phone"]');
+    let phoneIm = new Inputmask("+374 (99) 99-99-99");
+    phoneIm.mask(phone);
+
+    let email = document.querySelector('[name="email-address"]');
+    let emailIm = new Inputmask({alias: "email"});
+    emailIm.mask(email);
+
+    let cardNumber = document.querySelector('[name="card-number"]');
+    let cardNumberIm = new Inputmask("9999 9999 9999 9999");
+    cardNumberIm.mask(cardNumber);
+
+    let dateMax = document.querySelector('[name="datemax"]');
+    let dateMaxIm = new Inputmask({ alias: "datetime", inputFormat: "mm / yy"});
+    dateMaxIm.mask(dateMax);
+
+    let securityCode = document.querySelector('[name="security-code"]');
+    let securityCodeIm = new Inputmask("999");
+    securityCodeIm.mask(securityCode);
+}
+
+function km(){
+    let inp = document.querySelector(`[name="email-address"]`);
+    let hr = document.querySelector('.gm');
+    hr.innerText = inp.value;
+
+    let day = document.querySelector('.day');
+    let now = new Date();
+    let oneMonth = new Date(now.setMonth(now.getMonth() + 1));
+    day.innerText = oneMonth;
 }
 
 window.addEventListener('load', function(){
     getCountries();
-})
+    setInputMasks();
+});

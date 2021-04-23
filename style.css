@@ -132,6 +132,7 @@ a{
     min-height: 597px;
     align-items: stretch;
     overflow: hidden;
+    position: relative;
 }
 .form-content{
     width: 60%;
@@ -409,3 +410,28 @@ option:not([disabled]){
 /* Form Slides end */
 /* Form end */
 /* Main end */
+
+.thanks-content{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /*background: #fff;*/
+    display: flex;
+    min-height: 597px;
+    align-items: stretch
+}
+
+.thanks-texts {
+    width: 60%;
+    padding: 20px 40px 44px 40px;
+    box-sizing: border-box;
+    background: #fff
+}
+
+.right-layer {
+    width: 40%;
+    background: #f2f3f773;
+    padding: 24px 10px 15px 6px;
+    /* position: relative; */
+    box-sizing: border-box;
+}
